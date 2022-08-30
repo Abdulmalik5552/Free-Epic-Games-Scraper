@@ -1,0 +1,49 @@
+version: "3"
+services:
+
+  # chrome:
+  #   image: selenium/node-chrome:4.4.0-20220812
+  #   shm_size: 2gb
+  #   depends_on:
+  #     - selenium-hub
+  #   environment:
+  #     - SE_EVENT_BUS_HOST=selenium-hub
+  #     - SE_EVENT_BUS_PUBLISH_PORT=4442
+  #     - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  # edge:
+  #   image: selenium/node-edge:4.4.0-20220812
+  #   shm_size: 2gb
+  #   depends_on:
+  #     - selenium-hub
+  #   environment:
+  #     - SE_EVENT_BUS_HOST=selenium-hub
+  #     - SE_EVENT_BUS_PUBLISH_PORT=4442
+  #     - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  firefox:
+    image: selenium/node-firefox:4.4.0-20220812
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_START_XVFB=false
+
+  selenium-hub:
+    image: selenium/hub:4.4.0-20220812
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  epic_game_scraper:
+    depends_on:
+      - selenium-hub
+    build: ./backend/
+    env_file:
+      - .env
+    command: [ "bash", "./scripts/wait_for_grid.sh", "python3", "services/epic_game_scraper.py" ]
