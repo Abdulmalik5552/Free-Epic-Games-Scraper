@@ -102,7 +102,7 @@ This project aims to scrap and notify users whenever the free games from stores 
 This is how you may set up your project locally.
 * Docker
   ```sh
-  docker-compose up --b
+  docker-compose up
   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
