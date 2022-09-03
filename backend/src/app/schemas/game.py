@@ -3,8 +3,7 @@ from pydantic import BaseModel, validator, Field
 from datetime import datetime, timezone
 
 
-class Game(BaseModel):
-    id: int
+class GameCreate(BaseModel):
     title: str
     start_date: datetime
     end_date: datetime
@@ -27,3 +26,12 @@ class Game(BaseModel):
     def set_free_game_now(cls, v: bool, values):
         return values["start_date"] == values["end_date"]
 
+
+class Game(GameCreate):
+    id: int
+
+class GameUpdate(BaseModel):
+    title: str | None
+    start_date: datetime | None
+    end_date: datetime | None
+    is_free_now: bool | None
