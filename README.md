@@ -160,7 +160,7 @@ Project Link: [https://github.com/Abdulmalik5552/Free-Games-Scraper](https://git
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [docker-selenium](https://github.com/SeleniumHQ/docker-selenium)
+* [Example of Selenium with Python on Docker with latest FireFox](https://takac.dev/example-of-selenium-with-python-on-docker-with-latest-firefox/)
 * [Web-Scraping-with-Python](https://coddyschool.com/upload/Web-Scraping-with-Python_proglib.pdf)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
