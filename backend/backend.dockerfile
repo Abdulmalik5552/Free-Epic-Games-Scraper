@@ -15,3 +15,5 @@ COPY src ./
 
 
 ENV PYTHONPATH=/usr/src
+
+CMD bash ./scripts/prestart.sh
